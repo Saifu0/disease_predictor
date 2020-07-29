@@ -20,13 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x%0sb#lypxkbtqfn)z6w@l!2d_by!a2&27zo)8otifm)k)@z2u'
+SECRET_KEY = 'nlyb$az5_kb1!$+x!yglvl^bb&&yypa1$igq463j0(mo0!**z8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # Application definition
 
@@ -37,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.endpoints',
-    'rest_framework'
-    
+    'rest_framework',
+    'endpoints',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

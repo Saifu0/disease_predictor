@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>Disease Predictor</title>
+    <style>
+      .footer {
+        padding: 10px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: black;
+        color: white;
+        text-align: center;
+      }
+      footer {
+        text-align: center;
+        padding: 3px;
+        background-color: DarkSalmon;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    {%load static %} {%load crispy_forms_tags %}
+    <div>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">BMI</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Care</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link disabled"
+            href="#"
+            tabindex="-1"
+            aria-disabled="true"
+            >Feedback</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link disabled"
+            href="#"
+            tabindex="-1"
+            aria-disabled="true"
+            >In order to get correct prediction, choose everything you'r
+            experiencing.</a
+          >
+        </li>
+      </ul>
+      <div>
+        <form method="post">
+          {% csrf_token %}
+          <div class="ml-3">
+            <div class="row">
+              <div class="col-sm">
+                {{ form.itching|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.skin_rash|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.nodal_skin_eruptions|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.continuous_sneezing|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.shivering|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.chills|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.joint_pain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.stomach_pain|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.acidity|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.ulcers_on_tongue|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.muscle_wasting|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.vomiting|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.burning_micturition|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.fatigue|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.weight_gain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.anxiety|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.cold_hands_and_feets|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.mood_swings|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.weight_loss|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.restlessness|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.patches_in_throat|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.irregular_sugar_level|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.cough|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.high_fever|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.sunken_eyes|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.breathlessness|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.weight_loss|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.sweating|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.dehydration|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.indigestion|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.headache|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.yellowish_skin|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.dark_urine|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.nausea|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.loss_of_appetite|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.pain_behind_the_eyes|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.back_pain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.constipation|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.abdominal_pain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.diarrhoea|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.mild_fever|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.yellow_urine|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.acute_liver_failure|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.fluid_overload|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.swelling_of_stomach|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.swelled_lymph_nodes|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.malaise|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.blurred_and_distorted_vision|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.phlegm|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.throat_irritation|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.acute_liver_failure|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.redness_of_eyes|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.sinus_pressure|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.runny_nose|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.congestion|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.chest_pain|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.phlegm|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.throat_irritation|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.acute_liver_failure|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.redness_of_eyes|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.sinus_pressure|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.runny_nose|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.congestion|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.chest_pain|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.weakness_in_limbs|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.fast_heart_rate|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.pain_during_bowel_movements|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.pain_in_anal_region|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.bloody_stool|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.irritation_in_anus|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.neck_pain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.dizziness|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.cramps|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.bruising|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.obesity|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.swollen_legs|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.swollen_blood_vessels|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.puffy_face_and_eyes|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.enlarged_thyroid|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.brittle_nails|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.swollen_extremeties|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.excessive_hunger|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.extra_marital_contacts|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.drying_and_tingling_lips|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.slurred_speech|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.knee_pain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.hip_joint_pain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.muscle_weakness|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.stiff_neck|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.swelling_joints|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.movement_stiffness|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.spinning_movements|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.loss_of_balance|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.unsteadiness|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.weakness_of_one_body_side|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.loss_of_smell|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.bladder_discomfort|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.foul_smell_of|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.continuous_feel_of_urine|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.passage_of_gases|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.internal_itching|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.toxic_look_typhos|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.depression|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.irritability|as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm">
+                {{ form.muscle_pain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.altered_sensorium|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.red_spots_over_body|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.pain_in_anal_region|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.belly_pain|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.abnormal_menstruation|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.dischromic_patches|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.watering_from_eyes|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.increased_appetite|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.increased_appetite|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.polyuria|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.family_history|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.mucoid_sputum|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.rusty_sputum|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.lack_of_concentration|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.visual_disturbances|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.receiving_blood_transfusion|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.receiving_unsterile_injections|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.coma|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.stomach_bleeding|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.distention_of_abdomen|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.history_of_alcohol_consumption|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.fluid_overload_1|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.blood_in_sputum|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.prominent_veins_on_calf|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.palpitations|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.painful_walking|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.pus_filled_pimples|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.blackheads|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.scurring|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.skin_peeling|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.silver_like_dusting|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                {{ form.small_dents_in_nails|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.inflammatory_nails|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.blister|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.red_sore_around_nose|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.blackheads|as_crispy_field }}
+              </div>
+              <div class="col-sm">
+                {{ form.yellow_crust_ooze|as_crispy_field }}
+              </div>
+            </div>
+            <!-- <div> -->
+            <div class="footer">
+              <button
+                class="btn btn-outline-success"
+                style="width: 200px;"
+                type="submit"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                Predict
+              </button>
+            </div>
+
+            <div class="jumbotron">
+              <h1 class="display-4">
+                {% if messages %}
+                <!--  -->
+                {% for message in messages %}
+                <!--  -->
+                {{message}}
+                <!--  -->
+                {%endfor %}
+                <!--  -->
+                {% endif %}
+              </h1>
+              <p class="lead">
+                This is a simple hero unit, a simple jumbotron-style component
+                for calling extra attention to featured content or information.
+              </p>
+              <hr class="my-4" />
+              <p>
+                It uses utility classes for typography and spacing to space
+                content out within the larger container.
+              </p>
+              <a class="btn btn-primary btn-lg" href="#" role="button"
+                >Learn more</a
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p>Developer : Saifur Rehman Khan</p>
+      <p>
+        <a href="saifurrahmankhankhan@gmail.com"
+          >saifurrahmankhankhan@gmail.com</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
