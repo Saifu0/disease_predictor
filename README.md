@@ -33,7 +33,7 @@ pip install requirements.txt
 # Usage
 Choose as much as you can symptoms that he/she experiencing and then click on predict button to see result
 
-Contact for feedback or report or suggesting any feature. Click [here](saifurrahmankhankhan@gmail.com)
+Contact for feedback or report or suggesting any feature. Click [here](mailto:saifurrahmankhankhan@gmail.com)
 
 
 
